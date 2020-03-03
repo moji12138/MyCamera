@@ -30,25 +30,43 @@ import java.util.Date;
 public class PhotoActivity extends AppCompatActivity {
 
     String className;
+    String userName;
+    ImageView img_class;
+    ImageView img_note;
+    String classPath;
+    String notePath;
+    Intent nextIntent = new Intent(PhotoActivity.this,ImgActivity.class);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
+
         Intent classIntent = getIntent();
         className = classIntent.getStringExtra("class");
+        userName = classIntent.getStringExtra("user");
+
+        String root = "/sdcard/DCIM/";
+        classPath = root + "NyCamera/"+ className +"/上课/" + userName + ".jpg";
+        notePath = root + "NyCamera/"+ className +"/笔记/" + userName + ".jpg";
+
+        img_class = findViewById(R.id.img_class);
+        img_note = findViewById(R.id.img_note);
+
+
     }
 
     public void tack_class_photo(View view) {
-        Intent intent  = new Intent(this,ImgActivity.class);
-        intent.putExtra("path","/"+ className +"/上课");
-        intent.putExtra("class",className);
-        startActivity(intent);
+        nextIntent.putExtra("path",classPath);
+        nextIntent.putExtra("class",className);
+        nextIntent.putExtra("user",userName);
+        startActivity(nextIntent);
     }
 
     public void tack_note_photo(View view) {
-        Intent intent  = new Intent(this,ImgActivity.class);
-        intent.putExtra("path","/"+ className +"/笔记");
-        intent.putExtra("class",className);
-        startActivity(intent);
+        nextIntent.putExtra("path",classPath);
+        nextIntent.putExtra("class",className);
+        nextIntent.putExtra("user",userName);
+        startActivity(nextIntent);
     }
 }

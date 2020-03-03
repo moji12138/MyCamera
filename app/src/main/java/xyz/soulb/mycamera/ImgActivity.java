@@ -43,7 +43,8 @@ public class ImgActivity extends AppCompatActivity {
     public Button btn_clear;
     public Bitmap Pic;
     public String className;
-
+    public String path;
+    public String userName;
     Context mContext = ImgActivity.this;
 
     @Override
@@ -60,6 +61,8 @@ public class ImgActivity extends AppCompatActivity {
         }
         Intent intent =getIntent();
         className = intent.getStringExtra("class");
+        path = intent.getStringExtra("path");
+        userName = intent.getStringExtra("user");
 
 
         btn_oCam = findViewById(R.id.btu_oCam);
@@ -84,17 +87,13 @@ public class ImgActivity extends AppCompatActivity {
 
 
     public int saveImage() {
-        String root = "/sdcard/DCIM/";
-        Intent intent = getIntent();
-        String path = intent.getStringExtra("path");
-        String dirName = "MyCamera" + path;
-        File appDir = new File(root , dirName);
-        if (!appDir.exists()) {
-            appDir.mkdirs();
+        File dirName = new File(path);
+        if (!dirName.exists()) {
+            dirName.mkdirs();
         }
-        String fileName = "李强.jpg";
+        String fileName = userName + ".jpg";
         //获取文件
-        File file = new File(appDir, fileName);
+        File file = new File(dirName, fileName);
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(file);
