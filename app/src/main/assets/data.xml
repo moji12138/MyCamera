@@ -1,0 +1,29 @@
+<data>
+    <one>
+        <mon>
+            <name></name>
+            <pos></pos>
+            <teacher></teacher>
+        </mon>
+        <tue>
+            <name>操作系统</name>
+            <pos>钉钉</pos>
+            <teacher>贾倩</teacher>
+        </tue>
+        <wed>
+            <name></name>
+            <pos></pos>
+            <teacher></teacher>
+        </wed>
+        <thu>
+            <name></name>
+            <pos></pos>
+            <teacher></teacher>
+        </thu>
+        <fri>
+            <name></name>
+            <pos></pos>
+            <teacher></teacher>
+        </fri>
+    </one>
+</data>
